@@ -18,8 +18,6 @@
 #===============================================================================
 
 #set -o nounset                              # Treat unset variables as an error
-rm outputFile.csv
-rm MOCK_DATA_201*
 rm temp/MOCK_DATA*
 rmdir temp/
 

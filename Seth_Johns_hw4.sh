@@ -37,8 +37,13 @@ do
 	$(tar -zxf $file -C ./temp)
 done
 sed -f AlmostThere_hw4.sed temp/MOCK_DATA* > midFile.csv
-awk -f AlmostThere_hw4.awk midFile.csv > outputFile.csv
+awk -f AlmostThere_hw4.awk midFile.csv > MOCK_DATA_FILTER_`(date +%Y_%m_%d_%H:%M)`.csv
 rm midFile.csv
+
+(mv MOCK_DATA* ./temp/)
+$(zip MOCK_DATA_FILTER_`(date +%Y_%m_%d_%H:%M)`.zip temp/MOCK_DATA_FILTER*)
+
+$(./cleanUp.sh)
 
 exit 0
 
