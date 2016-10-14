@@ -48,7 +48,7 @@ ftp -inv $HOST << EOF
 	then
 		put MOCK_DATA_FILTER*
 	else
-		mkdir -r /srv/ftp/MOCK_DATA/
+		mkdir /srv/ftp/MOCK_DATA/
 		put MOCK_DATA_FILTER*
 	fi
 EOF
