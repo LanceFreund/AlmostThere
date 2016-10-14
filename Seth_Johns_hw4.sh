@@ -19,14 +19,26 @@
 
 #set -o nounset                              # Treat unset variables as an error
 
-if [[ $1 == "2015" || $1 == "2016"]]
+if [[ $1 == "2015" || $1 == "2016" ]]
 then
-	$(wget www.icarus.cs.weber.edu/~hvalle/cs3030/MOCK_DATA_20[15..16].tar.gz)
+	$(wget icarus.cs.weber.edu/~hvalle/cs3030/MOCK_DATA_201{5..6}.tar.gz)
 else
 	echo "You have chosen the wrong year"
+	exit 1
 fi
 
+if [[ ! -f temp ]]
+then
+	$(mkdir temp)
+fi
 
+for file in *.tar.gz
+do
+	$(tar -zxf $file -C ./temp)
+done
+sed -f AlmostThere_hw4.sed temp/MOCK_DATA* > midFile.csv
+$(awk -f AlmostThere_hw4.awk midFile.csv) > outputFile.csv
+#rm midFile.csv
 
 exit 0
 
