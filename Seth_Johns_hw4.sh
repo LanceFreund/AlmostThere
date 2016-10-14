@@ -37,8 +37,8 @@ do
 	$(tar -zxf $file -C ./temp)
 done
 sed -f AlmostThere_hw4.sed temp/MOCK_DATA* > midFile.csv
-$(awk -f AlmostThere_hw4.awk midFile.csv) > outputFile.csv
-#rm midFile.csv
+awk -f AlmostThere_hw4.awk midFile.csv > outputFile.csv
+rm midFile.csv
 
 exit 0
 
