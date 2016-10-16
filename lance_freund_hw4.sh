@@ -15,8 +15,10 @@
 
 #set -o nounset                              # Treat unset variables as an error
 
+# Usage statement to explain program perameters
 usage="Input perameters are -y Year(*Required) -e Email(*Required) -u User -p     Password"
 
+# The getopts is used to store the input perameters into variables
 while getopts ":y:e:u:p:" opt;
 do
 	case $opt in
@@ -30,6 +32,8 @@ do
 	esac
 done
 
+# This if statment ensures user enters -y and -e or displays usage statement
+# or else it calls the Seth_Johns_hw4.sh script
 if [[ ! $year || ! $email ]]
 then
 	echo $usage
@@ -37,6 +41,8 @@ then
 else
 	(./Seth_Johns_hw4.sh $year)
 fi
+
+# This starts the FTP data transfer
 HOST=137.190.19.98
 if [[ ! $user || ! $password ]]
 then
