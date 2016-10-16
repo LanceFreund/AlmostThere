@@ -15,7 +15,7 @@
 
 #set -o nounset                              # Treat unset variables as an error
 
-usage="A -y year and - e email address are required"
+usage="Input perameters are -y Year(*Required) -e Email(*Required) -u User -p     Password"
 
 while getopts ":y:e:u:p:" opt;
 do
@@ -24,7 +24,8 @@ do
 		e ) email=$OPTARG;;
 		u ) user=$OPTARG;;
 		p ) password=$OPTARG;;
-		\?) echo "perameters are needed"
+		\?) echo "There invalid perameters."
+			echo $usage
 			exit 1
 	esac
 done
