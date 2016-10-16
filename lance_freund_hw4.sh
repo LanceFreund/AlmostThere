@@ -43,21 +43,7 @@ else
 fi
 
 # This starts the FTP data transfer
-HOST=137.190.19.98
-if [[ ! $user || ! $password ]]
-then
-	user="anonymous"
-	password="anonymous@weber.edu"
-fi
-ftp -inv $HOST << EOF
-	user $user $password
-	if [[ -a /srv/ftp/MOCK_DATA/  ]]
-	then
-		put MOCK_DATA_FILTER*
-	else
-		mkdir /srv/ftp/MOCK_DATA/
-		put MOCK_DATA_FILTER*
-	fi
-EOF
+
+	(./karl_marble_hw4.sh $USER $PASSWD)
 
 exit 0
